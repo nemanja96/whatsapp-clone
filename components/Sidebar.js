@@ -11,6 +11,7 @@ import { auth, db } from '../firebase';
 import { signOut } from 'firebase/auth';
 import LogoutIcon from '@mui/icons-material/Logout';
 import {useCollection} from 'react-firebase-hooks/firestore';
+import Chat from './Chat';
 
 function Sidebar() {
 
@@ -69,6 +70,11 @@ function Sidebar() {
             Start a new chat
         </SidebarButton>
 
+        {
+            chatsSnapshot?.docs.map(chat => (
+                <Chat key={chat.id} id={chat.id} user={chat.data().users} />
+            ))
+        }
     </Container>
   )
 }

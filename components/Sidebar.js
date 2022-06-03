@@ -19,7 +19,6 @@ function Sidebar() {
 
     const userChatRef = db.collection("chats").where("users", "array-contains", user.email);
     const [chatsSnapshot] = useCollection(userChatRef);
-    console.log(chatsSnapshot);
 
     const logout = () => {
         signOut(auth);
@@ -40,11 +39,10 @@ function Sidebar() {
 
     }
 
-    const chatAlreadyExists = (recipientEmail) => {
+    const chatAlreadyExists = (recipientEmail) => 
         !!chatsSnapshot?.docs.find(
-            chat => chat.data().users.find((user => user === recipientEmail)?.length > 0)
+            (chat) => chat.data().users.find((user) => user === recipientEmail)?.length > 0
         )
-    }
 
   return (
     <Container>
@@ -72,7 +70,7 @@ function Sidebar() {
 
         {
             chatsSnapshot?.docs.map(chat => (
-                <Chat key={chat.id} id={chat.id} user={chat.data().users} />
+                <Chat key={chat.id} id={chat.id} users={chat.data().users} />
             ))
         }
     </Container>

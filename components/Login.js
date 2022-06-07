@@ -4,6 +4,9 @@ import Head from 'next/head';
 import Button from '@mui/material/Button';
 import { auth } from '../firebase';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import googleIcon from '../public/google.png';
+import whatsappIcon from '../public/whatsapp.png';
+import Image from 'next/image';
 
 function Login() {
 
@@ -12,12 +15,12 @@ function Login() {
   return (
     <Container>
         <Head>
-            <title>Login</title>
+            <title>WhatsApp Clone - Nemanja Radivojevic</title>
         </Head>
 
         <LoginContainer>
-            <Logo src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/479px-WhatsApp.svg.png" />
-            <Button onClick={() => signInWithGoogle()} variant="outlined">Sign in with Google</Button>
+            <Image src={whatsappIcon} width="200" height="200" />
+            <SignIn onClick={() => signInWithGoogle()} variant="outlined"><Image src={googleIcon} width="25" height="25" /><span>Sign in with Google</span></SignIn>
         </LoginContainer>
     </Container>
   )
@@ -29,20 +32,35 @@ const Container = styled.div`
     display: grid;
     place-items: center;
     height: 100vh;
+    background: #25D366;
 `
 
 const LoginContainer = styled.div`
     display: flex;
     padding: 100px;
     align-items:center;
-    background: white;
     border-radius: 5px;
     flex-direction: column;
-    box-shadow: 0px 4px 14px -3px rgba(0, 0, 0, 0.7);
+
+    @media screen and (max-width: 450px) {
+        padding: 50px;
+    }
 `
 
-const Logo = styled.img`
-    width: 200px;
-    height: 200px;
-    margin-bottom: 50px;
+const SignIn = styled(Button)`
+    background: white !important;
+    height: 50px !important;
+    text-transform: none;
+    font-weight: 600;
+    margin-top: 40px;
+    color: #777;
+
+    > span {
+        margin-left: 10px;
+    }
+
+    &:hover, &:focus {
+        outline: none !important;
+        border: none !important;
+    }
 `

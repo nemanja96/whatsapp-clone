@@ -51,7 +51,7 @@ function Sidebar() {
 
             <IconsContainer>
                 <IconButton>
-                    <ChatIcon /> 
+                    <ChatIcon className="removeIcon" /> 
                 </IconButton>
                 <IconButton>
                     <LogoutIcon onClick={logout} />
@@ -65,7 +65,7 @@ function Sidebar() {
         </Search>
 
         <SidebarButton onClick={createChat}>
-            Start a new chat
+            New Chat
         </SidebarButton>
 
         {
@@ -93,13 +93,36 @@ const Container = styled.div`
 
     -ms-overflow-style: none; 
     scrollbar-width: none;
-`;
+
+    @media screen and (max-width: 850px) { 
+        flex: 0.3;
+        min-width: 250px;
+    }
+
+    @media screen and (max-width: 600px) { 
+        flex: 0.3;
+        min-width: 200px;
+    }
+
+    @media screen and (max-width: 550px) { 
+        flex: 0.2;
+        min-width: 100px;
+    }
+
+    @media screen and (max-width: 390px) { 
+        min-width: 50px;
+    }
+`
 
 const Search = styled.div`
     display: flex;
     align-items: center;
     padding: 20px;
     border-radius: 2px;
+
+    @media screen and (max-width: 550px) { 
+        display: none;
+    }
 `
 
 const SidebarButton = styled(Button)`
@@ -108,6 +131,11 @@ const SidebarButton = styled(Button)`
     &&& {
         border-top: 1px solid whitesmoke;
         border-bottom: 1px solid whitesmoke;
+    }
+
+    @media screen and (max-width: 390px) { 
+      padding: 0px;
+      min-width: 50px;
     }
 `
 
@@ -126,8 +154,17 @@ const Header = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 15px;
-    height: 80px;
+    height: 120px;
     border-bottom: 1px solid whitesmoke;
+
+    @media screen and (max-width: 600px) {
+        justify-content: center;
+        flex-direction: column;
+
+        .removeIcon{
+            display: none;  
+        } 
+    }
 `;
 
 const UserAvatar = styled(Avatar)`
@@ -136,8 +173,15 @@ const UserAvatar = styled(Avatar)`
     &:hover{
         opacity: 0.8;
     }
+
+    @media screen and (max-width: 390px) {
+            width: 30px !important;
+            height: 30px !important;
+    }
 `
 
 const IconsContainer = styled.div`
-
+    @media screen and (max-width: 600px) { 
+        
+    }
 `

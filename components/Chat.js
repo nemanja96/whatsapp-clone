@@ -25,7 +25,7 @@ function Chat({ id, users }) {
   return (
     <Container onClick={enterChat}>
         { recipient ? <UserAvatar src={recipient?.photoURL} /> : <UserAvatar>{recipientEmail[0].toUpperCase()}</UserAvatar> }
-        {recipientEmail}
+        <span>{recipientEmail}</span>
     </Container>
   )
 }
@@ -39,12 +39,36 @@ const Container = styled.div`
     padding: 15px;
     word-break: break-word;
 
+    @media screen and (max-width: 600px) { 
+      justify-content: center;
+    }
+
+    @media screen and (max-width: 390px) { 
+      padding: 15px 7px;
+    }
+
     &:hover{
         background: #e9eaeb;
+    }
+
+    > span{
+          @media screen and (max-width: 600px) { 
+            display: none !important;
+          }
     }
 `
 
 const UserAvatar = styled(Avatar)`
     margin: 5px;
     margin-right: 15px;
+
+    @media screen and (max-width: 600px) { 
+      margin-right: 0px;
+    }
+
+    @media screen and (max-width: 390px) { 
+      margin: 0px;
+      width: 30px !important;
+      height: 30px !important;
+    }
 `   

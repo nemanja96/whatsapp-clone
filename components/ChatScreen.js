@@ -123,26 +123,55 @@ const Header = styled.div`
   height: 80px;
   align-items: center;
   border-bottom: 1px solid whitesmoke;
+
+  @media screen and (max-width: 390px) {
+    padding: 5px;
+     
+    .css-1wlk0hk-MuiAvatar-root{
+      width: 30px !important;
+      height: 30px !important;
+    }
+  }
 `
 
 const HeaderInformation = styled.div`
   margin-left: 15px;
   flex: 1;
 
+  @media screen and (max-width: 450px) { 
+    margin-left: 5px;
+    }
+
   > h3{
     margin-bottom: 3px;
     line-height: 1em;
+
+    @media screen and (max-width: 750px) { 
+        font-size: 1rem;
+    }
+
+    @media screen and (max-width: 450px) { 
+        font-size: 0.8rem;
+        line-height: 0.7em;
+    }
   }
 
   > p{
     font-size: 14px;
     color: gray;
     line-height: 1em;
+
+    @media screen and (max-width: 450px) { 
+        font-size: 0.8rem;
+        line-height: 0.7em;
+    }
   }
 `
 
 const HeaderIcons = styled.div`
-
+    @media screen and (max-width: 700px) { 
+        display: none;
+    }
 `
 
 const MessageContainer = styled.div`
@@ -150,6 +179,14 @@ const MessageContainer = styled.div`
   background: #e5ded8;
   min-height: 90vh;
   padding-bottom: 100px;
+
+  @media screen and (max-width: 700px) { 
+    padding: 15px;
+  }
+
+  @media screen and (max-width: 450px) { 
+    padding: 10px;
+  }
 `
 
 const EndOfMessage = styled.div`
@@ -176,4 +213,10 @@ const Input = styled.input`
   background: whitesmoke;
   z-index: 100;
   border-radius: 5px;
+  border: none;
+
+  &:focus{
+    background: whitesmoke;
+    outline: none;
+  }
 `
